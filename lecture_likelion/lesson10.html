@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>값, 단위, 숫자</title>
+    <style>
+        html{
+            font-size: 32px;
+        }
+        #main{
+            background-color: bisque;
+            height: 240px; /* px은 절대길이 */
+            width: 75%;
+        }
+        #per{
+            background-color: tomato;
+            width: 50%;
+        }
+        #px {
+            background-color: red;
+            width: 16px;
+            height: 16px;
+        }
+        #em {
+            background-color: blue;
+            width: 2em;
+            height: 2em;
+            font-size: 24px;
+        }
+        #rem{
+            background-color: yellow;
+            width: 1rem;
+            height: 1rem; /* 반응형을 만들 때는 보통 rem을 사용. */
+        }
+    </style>
+</head>
+<body>
+    <div id="main">단위
+        <div id="px">px</div>
+        <div id="em">em</div>
+        <div id="rem">rem</div>
+        <div id="per"> per </div>
+    </div>
+</body>
+</html>
