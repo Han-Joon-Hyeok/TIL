@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자</title>
+    <style>
+        p { color:aquamarine; } /* 단순 선택자 */
+        #snow { color: blue; } /* ID 선택자 */
+        .contents { color: blueviolet;} /* Class 선택자 */
+        * { background-color: burlywood ;} /* 전체 선택자. 속도 저하의 우려가 있음. */
+        #newlink[target="_blank"] { color:red;} /* 속성 선택자 */
+        article > p { color: chartreuse;} /* 자식 선택자 */
+        article p { font-size: large;} /* 후손 선택자 */
+        /* pseudo 클래스 : 요소의 특별한 상태를 지정할 때 사용 */
+        a:link {color: chocolate;} /* 방문하지 않은 사이트 */
+        a:visited { color: green;} /* 방문한 사이트 */
+        a:hover {background-color: grey;} /* 마우스를 올렸을 때 효과 */
+    </style>
+</head>
+<body>
+    <h1>안녕하세요</h1>
+    <p>첫번째 단락</p>
+    <p>두번째 단락</p>
+    <h2 id="snow"> id 선택자 </h2>
+    <p class="contents"> 클래스 선택자 </p>
+    <a href="https://naver.com" target="_self"> 네이버 현재창 </a>
+    <a href="https://naver.com" target="_blank" id="newlink"> 네이버 새 창 </a>
+
+    <article>
+        <div>자식1
+            <p>후손1</p>
+        </div>
+        <div>자식2
+            <p>후손2</p>
+        </div>
+        <p>자식3</p>
+    </article>
+
+    <a href="https://google.com">구글</a>
+</body>
+</html>
