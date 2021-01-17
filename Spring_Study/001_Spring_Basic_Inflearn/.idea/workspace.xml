@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3092c28-ae91-45af-86a7-c31007767cb6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/hello_spring.xml" beforeDir="false" />
+    <list default="true" id="d9632464-1174-4e88-b5f7-ac8cc89b3c83" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/001_Spring_Basic_Inflearn.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/001_Spring_Basic_Inflearn.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello-spring/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/hello-spring/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello-spring/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/hello-spring/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello-spring/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/hello-spring/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello-spring/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/hello-spring/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello-spring/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/hello-spring/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello-spring/src/main/java/hello/hellospring/HelloSpringApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/hello-spring/src/main/java/hello/hellospring/HelloSpringApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello-spring/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/hello-spring/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello-spring/src/test/java/hello/hellospring/HelloSpringApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/hello-spring/src/test/java/hello/hellospring/HelloSpringApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello-spring/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello-spring/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +20,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectId" id="1n9ceGI2nvsRN2M5UbF4Id2qOSQ" />
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1n9nnY7NSTxfST03p5j7RLWIwdM" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -35,23 +39,24 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/hello-spring/build.gradle" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="shared-indexes" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d3092c28-ae91-45af-86a7-c31007767cb6" name="Default Changelist" comment="" />
-      <created>1610805843204</created>
+      <changelist id="d9632464-1174-4e88-b5f7-ac8cc89b3c83" name="Default Changelist" comment="" />
+      <created>1610811343831</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1610805843204</updated>
-      <workItem from="1610805848391" duration="495000" />
-      <workItem from="1610806662539" duration="805000" />
-      <workItem from="1610807551634" duration="389000" />
+      <updated>1610811343831</updated>
+      <workItem from="1610811348801" duration="54000" />
+      <workItem from="1610883296804" duration="993000" />
+      <workItem from="1610884336982" duration="17000" />
+      <workItem from="1610884372310" duration="14000" />
     </task>
     <servers />
   </component>
@@ -69,9 +74,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>
