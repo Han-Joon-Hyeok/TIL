@@ -116,6 +116,54 @@ bar
 
 만약 인라인 요소에도 적용하고 싶다면, `display`속성을 `block`이나 `inline-block`으로 변경하면 된다.
 
+#### `<form>`태그
+
+`<form>`태그는 웹 페이지에서 사용자가 정보를 입력한 정보를 서버로 보낼 수 있는 기능을 수행한다.
+
+``` HTML
+<form action="http://localhost/login.php">
+   <input type="text" name="id">
+   <input type="password" name="pw">
+   <input type="text" name="username">
+   <input type="submit">
+</form>
+```
+
+`<form>`태그의 속성으로 `action`은 입력한 정보들을 어떤 링크로 전송할 것인지 결정하는 역할을 한다.
+
+그래서 위의 링크로 전송을 하면 다음과 같은 링크가 만들어진다.
+
+`http://localhost/login.php?id=아이디&pw=1234&username=한준혁`
+
+여기서 `&(앰퍼샌드)`는 각각의 `input`태그들이 가진 `name`속성에 따라 구분하는 기호이고, 입력된 데이터는 `name값=입력값`으로 전송된다. `name` 속성은 서버에서 각각의 `input`태그들을 구분하는 기준이 된다.
+
+추후에 상세히 서술하겠지만, 위와 같이 URL에 정보를 담아 서버에 보내는 것을 `GET` 방식이라고 한다. 이렇게 정보를 보내면 보안에 민감한 개인정보가 주소에 노출된다는 단점이 있다. 
+
+따라서 이를 `POST`방식으로 전송하게 되면, `GET`이 HTTP 패킷의 header에 보내는 것과 달리 정보가 패킷의 body에 담기게 된다. 각각의 방식마다 장단점이 있으므로 상황에 맞게 사용을 하면 된다. `GET`과 `POST`에 대한 자세한 개념은 추후에 작성할 예정이다.
+
+##### `<select>` `<option>`태그
+
+`<select>`와 `<option>`태그는 사용자가 값을 선택할 수 있도록 도와주는 태그이다.
+
+``` HTML
+<select name="color">
+   <option value="red">빨강</option>
+   <option value="blue">파랑</option>
+   <option value="yellow">노랑</option>
+</select>
+```
+![Select_Option](https://user-images.githubusercontent.com/54902347/105448160-1d95e500-5cb9-11eb-987d-3afbd2c9de2b.png)
+
+콤보박스 형태로 만들어지며, `option`의 `value`속성은 태그 안에 적힌 텍스트 `빨강` 또는 `파랑`이 아닌 서버로 실제로 전달되는 값이다. 태그 사이에 적은 텍스트는 사용자에게 보여지는 텍스트이므로 잘 구분해서 사용해야 한다.
+
+그리고 `<select>`에서 `multiple` 속성을 입력하면, 아래의 사진과 같이 여러 옵션을 선택할 수 있게 된다.
+
+![Select_Multiple](https://user-images.githubusercontent.com/54902347/105448381-95640f80-5cb9-11eb-8c15-4c530d0ea8c2.png)
+
+그러면 서버에서는 다음과 같이 2개의 옵션이 포함된 URL을 전달 받는다.
+
+`http://localhost/select.php?color2=red&color2=blue`
+
 
 ### HTML 구조
 
