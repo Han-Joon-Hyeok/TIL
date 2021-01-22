@@ -45,7 +45,7 @@ Git은 `Version Control System`의 한 종류이다. 파일의 버전을 관리�
 
 <p align='center'>
     <img src="https://user-images.githubusercontent.com/54902347/105453593-bcbfda00-5cc3-11eb-8cd7-09468d742372.png" alt="Github 저장소 구조">
-    출처 : <a href="https://velog.io/@devmin/깃허브github-명령어-알아보기">https://velog.io/@devmin/깃허브github-명령어-알아보기</a>
+    <p align='center'>출처 : <a href="https://velog.io/@devmin/깃허브github-명령어-알아보기">https://velog.io/@devmin/깃허브github-명령어-알아보기</a></p>
 </p>
 
 크게는 `로컬 저장소`와 `원격 저장소` 2가지로 나뉘는데, 쉽게 말해서 `로컬 저장소`은 내 컴퓨터에 저장된 폴더를 의미하고, `원격 저장소`는 `Github` 서버에 올라간 폴더를 의미한다. 
@@ -96,7 +96,7 @@ Git은 `Version Control System`의 한 종류이다. 파일의 버전을 관리�
 
 <p align='center'>
     <img src="https://user-images.githubusercontent.com/54902347/105460364-05c95b80-5ccf-11eb-9072-04d3d50e5743.png" alt="file lifecycle">
-    출처 : <a href="https://git-scm.com/">https://git-scm.com/</a>
+    <p align='center'>출처 : <a href="https://git-scm.com/">https://git-scm.com/</a></p>
 </p>
 
 
