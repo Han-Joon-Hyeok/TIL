@@ -44,7 +44,7 @@ Git은 `Version Control System`의 한 종류이다. 파일의 버전을 관리�
 참고로 Github의 저장소 구조를 나타내면 아래의 사진과 같다.
 
 <p align='center'>
-    <img src=https://user-images.githubusercontent.com/54902347/105453593-bcbfda00-5cc3-11eb-8cd7-09468d742372.png>
+    <img src="https://user-images.githubusercontent.com/54902347/105453593-bcbfda00-5cc3-11eb-8cd7-09468d742372.png" alt="Github 저장소 구조">
     출처 : <a href="https://velog.io/@devmin/깃허브github-명령어-알아보기">https://velog.io/@devmin/깃허브github-명령어-알아보기</a>
 </p>
 
@@ -93,7 +93,12 @@ Git은 `Version Control System`의 한 종류이다. 파일의 버전을 관리�
 
 이 명령어는 `Untracked`, `Tracked`, `Modified`, `Unmodified` 4가지로 현재 파일의 상태를 나타낸다.
 
-![file_lifecycle](https://user-images.githubusercontent.com/54902347/105460364-05c95b80-5ccf-11eb-9072-04d3d50e5743.png)
+
+<p align='center'>
+    <img src="https://user-images.githubusercontent.com/54902347/105460364-05c95b80-5ccf-11eb-9072-04d3d50e5743.png" alt="file lifecycle">
+    출처 : <a href="https://git-scm.com/">https://git-scm.com/</a>
+</p>
+
 
 1. 처음 생성하면 `Untracked` 상태인데, 파일을 `git add`로 스테이징 영역으로 옮기면 `Tracked` 상태가 된다.
 2. `commit`을 통해 현재 버전에 대한 이력을 저장했다면, 자동으로 `Unmodified` 상태로 변경이 된다.
@@ -136,7 +141,8 @@ Git은 `Version Control System`의 한 종류이다. 파일의 버전을 관리�
 ``` text
 1. --- /dev/null : subfolder/test2.txt 라는 파일이 과거에는 없었다는 의미이다. 
 2. +++ b/subfolder/test2.txt : 해당 파일이 최근 커밋에 추가 되었다는 의미이다.
-3. @@ -0,0 +1 @@ : -0,0은 과거 파일을 기준으로 아무 것도 변경된 것이 없다는 것이고, +1은 최근 파일 1개에 1줄이 추가되었다는 것을 의미한다. 만약 2줄이 추가 되었으면 @@ -0,0 +1,2 @@로 표시될 것이다.
+3. @@ -0,0 +1 @@ : -0,0은 과거 파일을 기준으로 아무 것도 변경된 것이 없다는 것이고, +1은 최근 파일 1개에 1줄이 추가되었다는 것을 의미한다. 
+   만약 2줄이 추가 되었으면 @@ -0,0 +1,2 @@로 표시될 것이다.
 4. +hello this is second folder : "hello this is second folder"라는 내용이 파일에 추가되었다는 것이다.
 
 ```
