@@ -158,12 +158,92 @@ bar
 
 그리고 `<select>`에서 `multiple` 속성을 입력하면, 아래의 사진과 같이 여러 옵션을 선택할 수 있게 된다.
 
+``` HTML
+<select name="color" multiple>
+   <option value="red">빨강</option>
+   <option value="blue">파랑</option>
+   <option value="yellow">노랑</option>
+</select>
+```
+
 ![Select_Multiple](https://user-images.githubusercontent.com/54902347/105448381-95640f80-5cb9-11eb-8c15-4c530d0ea8c2.png)
 
 그러면 서버에서는 다음과 같이 2개의 옵션이 포함된 URL을 전달 받는다.
 
 `http://localhost/select.php?color2=red&color2=blue`
 
+##### `<input>`태그
+
+`<input>`태그는 사용자의 값을 입력 받는 기능을 수행한다.
+
+- `hidden` 속성 : UI상에는 보이지 않지만, 서버로 전송해야 하는 값이 있을 때 사용한다. 폼 제출 시 사용자가 변경해서는 안 되는 데이터를 보낼 때 사용한다. 
+  - 예를 들어, 업데이트 되어야 하는 데이터베이스의 레코드를 저장하거나, 고유한 보안 토큰 등을 서버로 보낼 때 사용할 수 있다.
+  - 또 다른 예시로, 이전 요청처리에 대한 값을 다음 요청에서도 연속성을 갖기 위해 사용하며, 이는 세션으로 대체할 수 있다.
+  ``` HTML
+  <form action="hide.php">
+      <input type="text" name="id">
+      <input type="hidden" name="hide" value="I'm hide">
+      <input type="submit">
+  </form>
+  ```
+  위와 같이 입력하면 URL은 다음과 같이 완성된다.
+  `http://localhost/hide.php?id=?hide="I'm hide"`
+
+- 파일 업로드 : 다음과 같이 작성하면 파일 업로드 할 수 있는 input 태그가 만들어진다.
+
+   ```HTML
+
+   <form action="http://localhost/upload.php" method="post" enctype="multipart/form-data">
+      <input type="file" name="profile">
+      <input type="submit">
+   </form>
+   ```
+
+   이때, 반드시 `<form>`태그의 `method`는 `post`, `enctype`은 `multipart/form-data`로 설정해야 한다.
+   
+   그리고 `<input>`태그에는 `name`속성이 설정되어 있어야 서버에서 정상적으로 처리가 가능하다.
+
+##### `<label>`태그
+
+`<label>` 태그는 `<input>` 태그에 대한 설명을 붙여줄 때 사용하는데, `<label>`태그 안에 있는 텍스트를 클릭해도 `<input>` 태그에 마우스 포커싱이 옮겨지는 효과를 구현할 수 있어서 사용자의 편리성을 높일 수 있다.
+
+```HTML
+<form action="">
+   <p>
+      <label for="id_txt">ID : </label>
+      <input id="id_txt" type="text" name="id">
+   </p>
+   <p>
+      <label for="PW">PW : 
+         <input id="PW" type="password" name="pwd">
+      </label>
+   </p>
+   <p>
+</form>
+```
+`<label>`과 `<input>`을 연결하기 위해서 전자에는 `for`속성값을, 후자에는 `id`속성값을 주면 된다.
+
+만약 `<label>` 태그 안에 `<input>` 태그를 담는다면, 똑같은 효과를 내면서도 조금 더 간편하게 구현할 수 있다.
+
+```HTML
+<!-- label에 id 속성을 주지 않고도 똑같은 효과를 내는 방법 -->
+<p>
+   <label>
+         <input type="checkbox" name="red"> 빨간색
+   </label>
+</p>
+<p>
+   <label>
+         <input type="checkbox" name="blue">파란색
+   </label>
+</p>
+```
+
+#### GET과 POST 방식의 차이
+
+`<form>` 태그에서 절대 빠질 수 없는 것이 GET과 POST 방식의 차이이다. 이에 대한 자세한 설명은 다른 문서에서 자세히 다루었다.
+
+- [GET과 POST 방식](GET_POST.md)
 
 ### HTML 구조
 
@@ -182,3 +262,53 @@ bar
 </body>
 </html>
 ```
+
+### Meta Data(메타 데이터)
+
+`Meta Data`는 데이터에 대한 데이터이다. 즉, **다른 데이터를 설명**하기 위해서 사용되는 데이터이다.
+
+HTML는 다양한 정보를 담은 정보인데, 해당 HTML 문서에 대해 부가적인 정보를 표현하기 위해 `<meta>`태그를 사용한다. HTML이라는 정보를 조금 더 가치 있는 정보로 만들기 위해서 사용한다고 이해할 수 있다.
+
+``` HTML
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="description" content="Hello HTML!">
+      <meta name="keywords" content="코딩, coding, 프로그래밍, html, css, js">
+      <meta name="author" content="joon">
+      <meta http-equiv="refresh" content="30">
+   </head>
+   <body>
+      안녕하세요. HTML에 대해서 정리한 문서입니다.
+   </body>
+</html>
+```
+위에서 사용된 속성들에 대해서 하나씩 설명하자면 다음과 같다.
+
+- `charset` : HTML 문서의 인코딩 형식을 나타내는 속성. 해당 속성이 존재하지 않으면 브라우저가 마음대로 해석을 하기 때문에, 글자가 깨져서 보인다.
+- `name="description"` : 해당 문서에 대한 요약이다. 우리 눈에는 보이지 않지만, 검색엔진에서 검색했을 때 요약 정보로 표시될 수 있다.
+- `name="keywords"` : 해당 문서에 대한 키워드 목록이다. 마찬가지로 검색엔진 최적화에 사용될 수 있다.
+- `name="author"` : 해당 문서의 저자를 의미한다.
+- `http-equiv="refresh"` : 자주 사용하지는 않지만, `content`에 설정한 초를 주기로 새로고침이 실행된다.
+
+
+### 의미론적 태그(Semantic Tag)
+
+시맨틱 태그(Semantic tag)는 HTML 문서를 의미 단위로 구분하기 쉽게 사용하는 태그이다. HTML5부터 본격적으로 사용되기 시작했다. 기존에는 `div` 태그를 이용해 개발자가 임의대로 나눠서 HTML 구조를 한 번에 이해하기 어려웠는데, 시맨틱 태그는 이러한 한계를 극복하기 위해서 등장하였다. 
+
+<p align="center">
+   <img src="images/semantic_tag.png">
+   출처 : <a href="https://thrillfighter.tistory.com/492">https://thrillfighter.tistory.com/492</a>
+</p>
+
+현대의 웹 페이지는 위와 같은 구조를 띄고 있다. 
+시맨틱 태그가 `div` 태그와 다른 기능을 수행하는 것은 아니고, HTML 구조를 한 눈에 알아보기 쉽게 사용하는 태그이다. 
+시맨틱 태그를 하나씩 살펴보면 다음과 같다.
+
+- `header` : 페이지의 상단에 보이는 영역이다. 주로 머리말이나 제목을 표현하기 위해 사용한다.
+- `nav` : 네비게이션이라고 불리며, 같은 사이트 내의 링크나 다른 사이트로의 링크들을 모아놓은 태그이다. 
+- `section` : 본문의 의미를 가지고 있으며, 여러 article을 모아놓은 태그이다. 본문의 갯수에 따라 여러 section을 가질 수 있다. 
+- `aside` : 페이지 좌측 또는 우측에서 페이지 콘텐츠를 제외한 내용을 표시하는 태그이다. 주로 광고나 사이드 바가 위치한다.
+- `footer` : 페이지 하단에 위치하는 태그이다. 주로 저작권, 연락처 정보와 같은 내용이 삽입된다. 
+
+이 외에도 다양한 시맨틱 태그가 사용되고 있는데, 크롬의 `개발자 도구`를 이용해서 다양한 웹 페이지를 둘러보면 시맨틱 태그가 어떻게 사용되는지 감이 올 것이다. 무엇보다 가장 좋은 방법은 **직접 페이지를 제작**해보는 것이다. 😊

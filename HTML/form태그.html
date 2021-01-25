@@ -30,6 +30,39 @@
         <input type="submit">
     </form>
 
+    <form>
+        <input type="text" name="id">
+        <input type="hidden" name="hide" value="I'm hide">
+        <input type="submit">
+    </form>
 
+    <form action="">
+        <p>
+           <label for="id_txt">ID : </label>
+           <input id="id_txt" type="text" name="id">
+        </p>
+        <p>
+           <label for="PW">PW : 
+              <input id="PW" type="password" name="pwd">
+           </label>
+        </p>
+
+        <!-- label에 id 속성을 주지 않고도 똑같은 효과를 내는 방법 -->
+        <p>
+            <label>
+                <input type="checkbox" name="red"> 빨간색
+            </label>
+         </p>
+        <p>
+            <label>
+                <input type="checkbox" name="blue">파란색
+            </label>
+        </p>
+     </form>
+
+     <form action="hello.php" method="post">
+         
+     </form>
+     
 </body>
 </html>
