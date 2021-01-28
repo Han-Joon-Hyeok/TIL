@@ -36,6 +36,12 @@ Git은 `Version Control System`의 한 종류이다. 파일의 버전을 관리�
 - `mkdir 폴더이름` : 현재 디렉토리에서 입력한 폴더 이름을 생성한다.
 - `Ctrl + Insert` : CMD창에서 선택한 영역을 복사한다.
 - `Shift + Insert` : 복사한 내용을 붙여넣는다.
+- `vim 파일이름.확장자명` : 현재 디렉토리에서 파일을 생성하거나, 해당 파일을 수정한다.
+  Ex) `vim hello_git.txt` : `hello_git.txt`파일을 생성한다.
+  - `i`(insert) : 위의 명령어를 입력하고 키보드에서 `i`를 누르면 내용 편집이 가능해진다.
+  - `esc`(escape) : 현재 작업에서 나온다.
+  - `:wq`(write and quit) : 현재 작성한 내용을 저장하고 종료한다.
+- `cat 파일이름.확장자명` : 현재 디렉토리에서 파일의 내용을 조회한다.
 
 ## git init : 저장소 만들기
 
@@ -323,3 +329,102 @@ commit된 파일들 중 **tracked 파일들을 working directory**(로컬 저장
 - [[Git] reset 한거 취소하는 방법](https://88240.tistory.com/284)
 - [https://jupiny.com/2019/03/19/revert-commits-in-remote-repository/](https://jupiny.com/2019/03/19/revert-commits-in-remote-repository/)
 - [https://github.com/HomoEfficio/dev-tips/blob/master/Git%20reverting%20multiple-commits.md](https://github.com/HomoEfficio/dev-tips/blob/master/Git%20reverting%20multiple-commits.md)
+
+
+## Git의 원리
+
+### git add의 원리
+
+`git add`는 현재 디렉토리에서 생성된 파일을 `스테이지 영역(커밋 대기상태)`에 추가하는 역할을 한다.
+
+```Text
+[t1.txt]
+a
+```
+
+`t1.txt`에 위와 같은 내용으로 저장을 하고, .`git` 폴더 내부를 살펴보자.
+
+![git add(1)](images/git_add(1).png)
+
+`git add`를 실행하면 `.git`폴더 내부에는 위와 같이 `index`파일과 `objects`폴더 아래에 파일이 하나 생긴다. 하나씩 살펴보자면 다음과 같다.
+
+- `index` : 현재 스테이징 영역에 존재하는 파일을 의미한다. 즉, 커밋을 대기하는 상태인 파일들의 목록이다.
+- `objects` : 스테이징 영역에 올라온 파일에 대한 내용이 생성되거나 커밋 내용이 생성되는 객체 폴더이고, 하위 폴더에는 각각의 고유한 문자열로 저장이 된다.
+  - `길이가 2인 하위 디렉토리`가 생성되며, 이 디렉토리 안에 파일의 내용을 `SHA1` 알고리즘으로 해석한 해시값이 파일명으로 생성된다. (SHA1으로 해시값을 만들어보고 싶다면 [SHA1-Online](http://www.sha1-online.com/)에 접속하여 확인해보자.)
+  
+  ![git add(2)](images/git_add(2).png)
+
+  - 본문에 `a`라고 입력하고 저장하면, git 내부적으로 내용을 압축하고 해시값을 계산을 한다. 이 글을 보시는 분들도 똑같이 내용을 입력하고 `git add`를 수행하면 사진과 똑같은 해시값을 얻게 될 것이다.
+
+  - git에서는 해당 파일에 대한 고유한 해시값을 `폴더명(2글자)` + `내용 해시값`을 합쳐서 인식을 한다. 
+
+  ![git add(3)](images/git_add(3).png)
+
+  - 그래서 `index`파일에서 링크가 된 해시값을 클릭하면 `f1.txt`에 대한 내용이 담긴 `objects`폴더 내부의 파일을 볼 수 있다.
+
+  - 즉, `index`는 스테이징 영역에 올라온 파일들을 해시코드를 통해 추적을 할 수 있다. C언어에서 사용하는 `포인터`와 비슷한 원리라고 생각할 수 있다.
+
+다음으로 `f2.txt`를 아래와 같이 생성하고 `git add`를 실행해보자.
+
+``` Text
+[f2.txt]
+z
+```
+
+![git add(4)](images/git_add(4).png)
+
+내용에 따라 해시값이 달라지므로 당연히 `f1.txt`와 해시값이 고유하게 구분이 된다.
+
+그러면 똑같은 내용의 파일을 복사한다면 git은 어떻게 인식을 할까?
+`f1.txt`를 복사해서 `f3.txt`로 만들고, `git add`를 실행하면 다음과 같은 결과가 나온다.
+
+![git_add(5)](images/git_add(5).png)
+
+`f1.txt`와 `f3.txt`는 파일이름이 다르지만, 내용이 똑같아서 같은 해시값으로 오브젝트 파일이 생성된다.
+
+**즉, 이름이 다른 파일이 5억개가 있어도 내용이 동일하다면 같은 오브젝트 파일**이라는 것이다. 그래서 `index`에서는 다른 파일명들은 인식하지만, 모두 같은 오브젝트 파일이기 때문에 **파일 내용에 대한 중복**을 제거할 수 있다.
+
+![git add(6)](images/git_add(6).png)
+
+### git objects 파일명의 원리
+
+![git objects(1)](images/git_objects(1).png)
+
+위에서 이미 설명했지만, 그림으로 알아보기 쉽게 표현하면 위와 같이 표현할 수 있다.
+
+1. `git add`를 수행하면 각각의 파일들이 고유한 해시값으로 기록된다.
+2. 같은 내용의 파일이 여러 개일지라도 1개의 오브젝트 파일로 인식해서 저장한다. (`index`파일 목록에는 각각의 파일명이 추가됨)
+
+만약 A파일과 B파일이 동일한 내용이었다가, B파일만 내용이 바뀐다면, 2개의 파일은 이제 각기 다른 해시값으로 저장이 된다.
+
+### git commit의 원리
+
+`git commit`을 수행하면 커밋 메세지에 대한 새로운 객체 파일을 생성하고, 해당 커밋 메세지에는 `tree`와 `parent`가 포함된다.
+
+- `tree` : 해당 커밋을 수행한 당시에 스테이지 영역에 있던 파일들의 목록이 담겨있다.
+- `parent` : 첫 커밋에는 존재하지 않지만, 두 번째 커밋부터는 이전에 실행된 커밋에 대한 정보가 존재한다. 
+- `blob` : 파일의 내용을 담고 있다.
+
+![git commit(1)](images/git_commit(1).png)
+
+첫 커밋에서는 `parent`가 존재하지 않고, `tree`만 존재한다.
+
+![git commit(2)](images/git_commit(2).png)
+
+두 번째 커밋부터는 이전 커밋에 대한 내역이 담긴 `parent`가 생성된다.
+
+![git commit(3)](images/git_commit(3).png)
+
+위의 그림과 같이 각각의 커밋들은 서로 연결이 되있고, 각 커밋들마다 파일 내용에 대한 정보를 담고 있기 때문에 Git을 통한 **파일 백업**이 가능해진다.
+
+즉, `tree`라고 하는 정보 구조에 각각의 커밋에 대한 모습을 사진으로 남겨놓는 것이다.
+
+### git status의 원리
+
+`index` 파일에 담긴 파일 정보와 현재 `Wokring Directory`에 있는 파일을 비교하여 새로운 파일이 추가되었는지, 기존의 파일이 수정 또는 삭제되었는지 판단한다.
+
+![git status](images/git_status.png)
+
+이전 커밋의 `tree`에서는 `f2.txt`에 대한 해시값을 발견할 수 없으므로 `git status`는 새로운 파일이 생성되었음을 발견한다.
+
+만약 `f1.txt`파일이 수정되었다면 해당 파일에 대한 해시값이 변경되므로, `git status`를 실행했을 때 해시값을 비교하여 수정되었다는 것을 감지할 수 있다.
