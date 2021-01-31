@@ -51,6 +51,53 @@ def combi(n, r) :
 
 ~~(사실 나는 고등학교 때 확률과 통계 부분을 특히 싫어해서 공부를 제대로 안했는데, 이렇게 만나게 될 줄은 상상도 못했다...)~~
 
+## 하노이의 탑
+
+`하노이의 탑`은 재귀 알고리즘 연습할 때 가장 유명한 문제이다. 원판을 최소한의 움직임으로 모두 옮기는 문제인데, 재귀 알고리즘으로 구현해보자.
+
+
+### 나의 풀이
+
+``` Python 
+def hanoi(n, start, by, to) :
+    if n==1:
+        print("기둥 %d의 원반을 기둥 %d로 옮긴다." % (start, to))
+    elif n==2:
+        print("기둥 %d의 원반을 기둥 %d로 옮긴다." % (start, by))
+        print("기둥 %d의 원반을 기둥 %d로 옮긴다." % (start, to))
+        hanoi(n-1, by, start, to)
+    else:
+        hanoi(n-1, start, to, by)
+        hanoi(1, start, by, to)
+        hanoi(n-1, by, start, to)
+
+    
+n = int(input("원판의 개수를 입력하세요 : "))
+hanoi(n, 1, 2, 3)
+```
+### 다른 사람의 풀이
+
+``` Python
+MSG_FORMAT = "{}번 원반을 {}에서 {}로 이동"
+
+def move(n, start, to):
+    print(MSG_FORMAT.format(n, start, to))
+
+def hanoi(n, start, to, via):
+    if n == 1:
+        move(1, start, to)
+    else:
+        hanoi(n-1, start, via, to)
+        move(n, start, to)
+        hanoi(n-1, via, to, start)
+
+hanoi(3, 1, 2, 3)
+
+# 참고 : https://shoark7.github.io/programming/algorithm/tower-of-hanoi
+```
+
+자세한 설명은 다시 작성할 예정
+
 ## 연습문제 : 재귀적 이진 탐색 구현
 
 이진 탐색 문제를 재귀적으로 구현하는 문제이다. 빈칸만 채우는 간단한 문제여서 비교적 쉽게 풀 수 있었다.
