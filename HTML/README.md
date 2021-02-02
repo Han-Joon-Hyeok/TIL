@@ -203,6 +203,39 @@ bar
    
    그리고 `<input>`태그에는 `name`속성이 설정되어 있어야 서버에서 정상적으로 처리가 가능하다.
 
+#### 새로운 제출양식들
+
+HTML5에서부터 제출양식(form 태그)에서 사용할 수 있는 다양한 제출양식과 속성들이 추가되었다. 
+##### `<input>` 태그
+
+###### type
+
+`type`에 새로운 값들을 입력받을 수 있게 되었다. 해당 타입들은 다음과 같다.
+
+- color
+- date
+- month
+- week
+- time
+- datetime
+- datetime-local
+- email
+- number
+- range
+- search
+- tel
+- url
+
+해당 속성들의 사용법은 필요할 때마다 검색해서 사용해보도록 하자.
+
+###### 속성
+
+- `autocomplete="on/off"` : form 태그 내부의 input 태그들이 갖는 자동완성기능을 설정하는 속성이다. 필요한  input 태그만 지정해서 사용할 수도 있다.
+- `placeholder="사용자에게 보여질 텍스트"` : input 태그가 아무것도 입력되지 않았을 때, 사용자에게 보여지는 텍스트이다.
+- `autofocus` : 페이지에 접속하면 특정 input 태그로 자동으로 포커싱이 맞춰지는 기능이다.
+- `required` : 사용자가 반드시 입력을 해야 하는 항목을 설정할 수 있다.
+- `pattern="정규식"` : 사용자가 지정한 정규식에 맞도록 입력했는 지 확인할 수 있다. 정규식에 대한 자세한 내용은 추후에 다룰 예정이다.
+
 ##### `<label>`태그
 
 `<label>` 태그는 `<input>` 태그에 대한 설명을 붙여줄 때 사용하는데, `<label>`태그 안에 있는 텍스트를 클릭해도 `<input>` 태그에 마우스 포커싱이 옮겨지는 효과를 구현할 수 있어서 사용자의 편리성을 높일 수 있다.
@@ -244,6 +277,96 @@ bar
 `<form>` 태그에서 절대 빠질 수 없는 것이 GET과 POST 방식의 차이이다. 이에 대한 자세한 설명은 다른 문서에서 자세히 다루었다.
 
 - [GET과 POST 방식](GET_POST.md)
+
+
+#### `<iframe>` 태그
+
+`<iframe>` 태그는 웹 페이지 안에 다른 웹 페이지를 삽입하는 태그이다. HTML4에서 등장하여 과거에는 많이 사용되었으나, iframe을 이용한 **해킹이나 정보 유출과 같은 보안 상의 문제**로 이제는 사용을 권장하지 않고 있다. 
+
+iframe를 통해 불러오는 `HTML`, `CSS` 자체는 위험하지 않지만, `Javascript`나 `<form>`태그를 통해서 사용자가 의도하지 않은 행동을 유도할 수 있게 된다.
+
+따라서 최신 버전인 HTML5에서는 자바스크립트의 실행과 폼 태그의 작동을 방지하기 위해서 `sandbox`라는 속성을 추가했다. 
+
+```HTML
+<iframe src="iframe_source.html" sandbox>
+```
+
+#### `<video>` 태그
+
+이미지를 삽입하는 것처럼 비디오 또한 삽입을 할 수 있도록 해주는 태그이다. 
+
+![html video tag(1)](images/html_video_tag(1).png)
+
+```HTML
+<video width="400" controls autoplay>
+   <source src="example.mp4">
+   <source src="example.ogv">
+</video>
+```
+
+비디오는 웹 브라우저마다 지원하는 동영상 포맷이 다르기 때문에 각 브라우저에 맞는 동영상을 등록하는 것이 중요하다. 이는 `<source>` 태그에서 동영상의 확장자로 설정을 할 수 있다. 최근에는 왠만한 브라우저에서 전부 지원을 하긴 하지만, 아래의 지원 목록을 참고해보도록 하자.
+
+##### 지원 브라우저 목록
+
+<p align="center">
+   <img src="images/html_video_tag(2).png">
+   <p align="center">출처 : <a href="https://www.w3schools.com/tags/tag_video.asp">https://www.w3schools.com/</a></p>
+</p>
+
+##### 속성 목록
+
+<table>
+   <tr>
+      <th>속성</th>     
+      <th>설명</th>   
+   </tr>
+   <tr>
+      <td>autoplay</td>
+      <td>재생 준비가 되면 자동으로 재생</td>
+   </tr>
+   <tr>
+      <td>controls</td>
+      <td>동영상 탐색 도구를 표시</td>
+   </tr>
+   <tr>
+      <td>height / width</td>
+      <td>높이 / 너비를 픽셀 단위로 설정</td>
+   </tr>
+   <tr>
+      <td>loop</td>
+      <td>영상을 반복 재생</td>
+   </tr>
+   <tr>
+      <td>muted</td>
+      <td>음소거 상태로 영상을 실행</td>
+   </tr>
+   <tr>
+      <td>poster</td>
+      <td>영상이 다운로드 중일 때 보여주는 사진 설정</td>
+   </tr>
+   <tr>
+      <td>preload</td>
+      <td>페이지가 로딩될 때 동영상을 같이 불러올 것인지 설정(auto, metadata, none으로 설정 가능)</td>
+   </tr>
+   <tr>
+      <td>src</td>
+      <td>영상 원본의 주소를 설정</td>
+   </tr>
+</table>
+
+자세한 기능 사용방법은 아래의 링크를 참고하도록 하자.
+
+[W3School HTML Video Tags](https://www.w3schools.com/tags/tag_video.asp)
+
+#### 브라우저 버전 별 태그 사용 여부 확인하기
+
+`Can I Use`라는 페이지에서 브라우저마다 HTML 태그를 사용할 수 있는 지 여부를 확인할 수 있다.
+
+![Can I Use](images/html_can_i_use.png)
+
+사실 개발할 때 자주 사용하는 태그는 정해져있지만, 브라우저마다 지원하는 태그가 다를 수 있으므로 정확한 데이터에 기반한 브라우저 지원 여부를 확인하는 습관을 가져보자.
+
+[Can I Use](https://caniuse.com/)
 
 ### HTML 구조
 
@@ -291,6 +414,16 @@ HTML는 다양한 정보를 담은 정보인데, 해당 HTML 문서에 대해 �
 - `name="author"` : 해당 문서의 저자를 의미한다.
 - `http-equiv="refresh"` : 자주 사용하지는 않지만, `content`에 설정한 초를 주기로 새로고침이 실행된다.
 
+#### 모바일 지원(viewport)
+
+`name="viewport"`를 사용하면 데스크탑용으로 작성한 페이지를 모바일 기기에서도 보기 적합한 사이즈로 조절해준다.
+
+`<meta name="viewport" content="width=device-width, initial-scale=1.0">`
+
+`content` 이후에 표시되는 내용들을 설명하자면 다음과 같다.
+
+- `width=device-width` : 모바일 기기에서 표시되는 페이지의 너비를 기기의 너비에 맞춰서 조절한다.
+- `initial-scale=1.0` : 페이지 확대/축소의 정도를 `scale`이라고 하는데, 이를 1.0(기본값)으로 설정한다.
 
 ### 의미론적 태그(Semantic Tag)
 
@@ -409,3 +542,40 @@ EX) `<link rel="canonical" href="http://localhost:8080/first.html">`
       <img src="images/logo.png" alt="로고를 클릭하면 홈페이지로 이동합니다.">
    </a>
    ```
+
+#### robots.txt
+
+`robots.txt`는 웹 페이지에 접근하는 크롤러 로봇들에게 접근에 대한 요청을 작성한 파일이다. 
+
+예컨대, 아래와 같은 파일이 작성되어있다고 해보자. 
+
+``` Text
+[robots.txt]
+User-agent: *
+Disallow: /
+Sitemap: /sitemap
+```
+
+- `User-agent`는 사용자를 대신해서 일을 수행하는 소프트웨어를 의미한다. 즉, 우리는 현재 보고 있는 페이지를 크롬이나 익스플로어와 같은 웹 브라우저 소프트웨어로 보고 있는 것이다. 
+
+- `Disallow`는 접근을 허용하지 않는 것을 명시하는 항목이다. 여기서는 `/(슬래시)`로 표현 되어있는데, 현재 접속한 페이지를 포함한 내부 페이지들에 대한 로봇의 접근을 허용하지 않는다는 의미이다. 주로 비즈니스와 관련있거나, 중요한 정보를 담은 페이지는 이 항목으로 설정한다.
+  
+  - 예를 들어, 네이버에 `https://naver.com`는 사실 주소의 맨 끝에 `/`가 생략이 되어있어서, `https://naver.com/`으로 표현할 수 있다. 맨 끝에 오는 슬래시 뒤로 `https://naver.com/blog/`, `https://naver.com/webtoon/`과 같은 다양한 주소들이 붙게 되는데, 이러한 하위 페이지들에 대한 로봇의 접근을 전부 막는다는 의미이다. 그래서 네이버에서 만든 콘텐츠들은 다른 검색엔진(구글)에서 검색이 되지 않게 된다.
+
+- `Allow` : 로봇의 접근을 허용하는 항목이다.
+
+- `Sitemap` : 웹 사이트의 구조를 한 눈에 보여주는 페이지이다. 전체 페이지에 대한 목록을 `xml`형식으로 기계가 이해하기 쉬운 형태로 보여주는 것이다.
+  ![seo robots sitemap](images/seo_robots_sitemap.png)
+
+#### 페이지 랭크(Page Rank)
+
+`페이지 랭크`는 검색엔진에서 페이지마다 순위를 매기고, 사용자가 검색 했을 때 랭킹이 높은 사이트를 먼저 상위 노출 시켜주는 알고리즘을 의미한다.
+
+![seo PageRank(1)](images/seo_PageRank(1).png)
+
+예를 들어, `고양이`에 대해 정보를 가지고 있는 A와 B사이트가 있다고 해보자. 나머지 C, D, E는 A사이트 링크를 표시한 페이지들이다. 이때, 다른 사이트와 링크가 많이 연결 되어있을수록 랭킹이 올라가게 된다. 그래서 검색 엔진에 `고양이`라고 검색했을 때, B보다 A가 상위에 노출된다. 
+
+그리고 A 사이트가 D 사이트를 향해 링크를 걸고 있으면, 다른 곳에서는 연결되어 있지 않은 사이트가 링크를 하는 것보다 훨씬 더 페이지랭크를 많이 올릴 수 있다.
+
+이러한 특징 때문에 많은 스팸 사이트들이 페이지 노출을 위해 다양한 페이지에 링크를 남기는 방법을 사용하고 있다. 사람들을 낚기 위한 링크가 많이 퍼져 있을수록 사이트에 대한 페이지랭크가 올라가므로 사람들의 유입이 많아지게 된다. 이는 곧 더욱 큰 비즈니스 기회로 이어질 수 있다는 것이다.
+
