@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window Size</title>
+    <style>
+        .container{
+            background-color: #ff9999;
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>window.screen : <span id="js-windowScreen"></span></p>
+        <p>window.outer : <span id="js-windowOuter"></span></p>
+        <p>window.inner : <span id="js-windowInner"></span></p>
+        <p>documentElement.clientWidth : <span id="js-clientWidth"></span></p>
+    </div>
+    <script>
+        const WINDOW_SCREEN = window.screen;
+
+        const windowScreenArea = document.getElementById("js-windowScreen");
+        const windowOuterArea = document.getElementById("js-windowOuter");
+        const windowInnerArea = document.getElementById("js-windowInner");
+        const clientArea = document.getElementById("js-clientWidth");
+        
+        window.addEventListener("resize", function(){
+            const WINDOW_OUTER_HEIGHT = window.outerHeight,
+                WINDOW_OUTER_WIDTH = window.outerWidth;
+            
+            const WINDOW_INNER_HEIGHT = window.innerHeight,
+                WINDOW_INNER_WIDTH = window.innerWidth;
+            
+            const WINDOW_DOCUMENT = document.documentElement;
+            const CLIENT_WIDTH = WINDOW_DOCUMENT.clientWidth,
+                CLIENT_HEIGHT = WINDOW_DOCUMENT.clientHeight;
+
+            windowScreenArea.innerText = `${WINDOW_SCREEN.width} * ${WINDOW_SCREEN.height}`
+            windowOuterArea.innerText = `${WINDOW_OUTER_WIDTH} * ${WINDOW_OUTER_HEIGHT}`
+            windowInnerArea.innerText = `${WINDOW_INNER_WIDTH} * ${WINDOW_INNER_HEIGHT}`
+            clientArea.innerText = `${CLIENT_WIDTH} * ${CLIENT_HEIGHT}`
+        })
+
+    </script>
+</body>
+</html>
