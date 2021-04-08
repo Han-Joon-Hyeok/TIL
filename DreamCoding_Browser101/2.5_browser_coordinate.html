@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>브라우저 좌표</title>
+    <style>
+
+        .box{
+            background-color: #99ffff;
+            width: 200px;
+            height: 200px;
+            float: left;
+        }
+
+        #absolute{
+            background-color: #ff9999;
+            width: 200px;
+            height: 200px;
+            position: absolute;   
+            left: 400px;
+            top: 400px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box" id="absolute"></div>
+    </div>
+    <script>
+        const box = document.getElementById('absolute');
+        const DOMRect = box.getBoundingClientRect();
+        console.log(DOMRect);
+        box.innerText = `
+        [getBoundingClientRect]
+        top : ${DOMRect.top} 
+        left: ${DOMRect.left}
+        bottom: ${DOMRect.bottom}
+        right: ${DOMRect.right}
+        `;
+
+    </script>
+</body>
+</html>
